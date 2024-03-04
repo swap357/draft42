@@ -1,5 +1,7 @@
 # Draft42 - Streamlit chatbot with function calling
 
+![Draft42](junk/draft42.png)
+
 ## Overview
 
 This is a simple chatbot app using Streamlit. 
