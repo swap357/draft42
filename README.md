@@ -1,4 +1,4 @@
-# Draft42 - Streamlit chatbot with function calling (now tools) 
+# Draft42 - Streamlit chatbot with function calling
 
 ## Overview
 
