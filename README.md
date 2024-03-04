@@ -51,7 +51,7 @@ We welcome contributions to the Draft42 project. Please refer to the CONTRIBUTIN
 Some ideas for potential contributions include:
 - Adding multiple AI models to simultaneously chat with the user.
 - Storing conversations in a lean database(sqlite possibly) for future reference and add it to sidebar.
-- Adding more useful functions to chatbot.
+- Adding more useful functions to chatbot - Plots, Image generation.
 
 ## Support and Contact
 
