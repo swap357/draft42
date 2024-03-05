@@ -10,7 +10,7 @@ class Tools(OpenAISchema):
     Represents a response from a GPT model, including additional metadata for context and debugging.
     """
     
-    action: Union[ShellCommand, TextResponse] = Field(
+    action: Union[TextResponse, ShellCommand] = Field(
         ...,
         description="Best function to respond to user's query, use text_response for most cases and other functions for specific use cases."
     )
