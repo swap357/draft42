@@ -1,6 +1,10 @@
 # Draft42 - Streamlit chatbot with function calling
 
 ![Draft42](junk/draft42.png)
+------
+
+## Group Chat with offline and remote models
+![GroupChat](junk/groupchat.png)
 
 ## Overview
 
