@@ -1,3 +1,4 @@
 streamlit==1.31.1
 instructor==0.6.2
 openai==1.13.3
+plotly==5.19.0

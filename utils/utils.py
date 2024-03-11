@@ -36,3 +36,33 @@ def about_app():
     """
     return about_message
 
+def apply_data_manipulations(df, manipulations):
+    # Example implementation - adjust based on actual needs
+    # Process filters
+    if manipulations.filters:
+        for filter_op in manipulations.filters:
+            if filter_op.operation == 'equals':
+                # Expecting value to be a list with one element for 'equals'
+                df = df[df[filter_op.column] == filter_op.value[0]]
+            elif filter_op.operation == 'less_than':
+                # Expecting value to be a list with one element for 'less_than'
+                df = df[df[filter_op.column] < filter_op.value[0]]
+            elif filter_op.operation == 'greater_than':
+                # Expecting value to be a list with one element for 'greater_than'
+                df = df[df[filter_op.column] > filter_op.value[0]]
+            elif filter_op.operation == 'between':
+                # Expecting value to be a list with two elements for 'between'
+                lower_bound, upper_bound = filter_op.value
+                df = df[(df[filter_op.column] >= lower_bound) & (df[filter_op.column] <= upper_bound)]
+    
+    # Process cleans
+    if manipulations.cleans:
+        for clean_op in manipulations.cleans:
+            if clean_op.method == 'fill_missing':
+                df[clean_op.column].fillna(clean_op.value, inplace=True)
+            elif clean_op.method == 'drop':
+                df.dropna(subset=[clean_op.column], inplace=True)
+            # Add more conditions for other cleaning methods
+
+    
+    return df
