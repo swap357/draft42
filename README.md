@@ -30,6 +30,7 @@ I know that the code is not perfect, but I am working on it. I am also open to s
 The application includes various functions to enhance user interaction and utility. Each function is defined as a Pydantic model, ensuring structured and validated input and output. Notable functions include:
 
 - **Shell Command Execution:** Users can execute safe shell commands directly through the chat interface, enabling a powerful tool for advanced users.
+[Beware: This function executes GPT generated command directly on the host env, I'm using it with safeguards, recommend modifying/using function to be executed in controlled sandbox]
 
 ## Installation
 
