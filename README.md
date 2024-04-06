@@ -51,8 +51,6 @@ After starting the application, select an AI model from the sidebar and interact
 
 ## Contributing
 
-We welcome contributions to the Draft42 project. Please refer to the CONTRIBUTING.md file for contribution guidelines.
-
 Some ideas for potential contributions include:
 - Adding multiple AI models to simultaneously chat with the user.
 - Storing conversations in a lean database(sqlite possibly) for future reference and add it to sidebar.
