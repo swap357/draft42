@@ -38,7 +38,15 @@ Follow these steps to set up the Draft42 chatbot locally:
 
 1. Clone the repository to your local environment.
 2. Ensure Python 3.8 or newer is installed.
-3. Install necessary Python dependencies by running `pip install -r requirements.txt`.
+3. Install the dependencies. The app relies on the latest `instructor` package
+   with Ollama support:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   Or install manually with:
+   ```bash
+   pip install "instructor[ollama]" openai
+   ```
 4. Launch the Streamlit app with `streamlit run app.py`.
 
 ## Usage
