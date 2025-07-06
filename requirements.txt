@@ -1,3 +1,6 @@
 streamlit==1.31.1
-instructor==0.6.2
-openai==1.13.3
+# Instructor provides structured outputs for LLMs. The `ollama` extra installs
+# dependencies used for local models via the Ollama server.
+instructor[ollama]==1.9.0
+# Instructor 1.9.0 requires `openai` >= 1.70.0.
+openai>=1.93.0

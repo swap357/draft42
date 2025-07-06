@@ -17,7 +17,7 @@ class Tools(OpenAISchema):
 
     def process(self):
         """Process the action."""
-        output = self.action.process()
-        # restrict the output to limited openai tokens length, some might be less than 4096
-        output = output[:4096]
-        return output
+        response, tool = self.action.process()
+        # restrict response length to avoid overly long outputs
+        response = response[:4096]
+        return response, tool

@@ -20,16 +20,16 @@ class GPTModelManager:
         Initializes the GPT client based on the configuration.
         """
         if self.use_local:
-            self.client = instructor.patch(
+            self.client = instructor.from_openai(
                 OpenAI(
                     base_url="http://localhost:11434/v1",
-                    api_key="ollama",  # Local API key, required but unused
+                    api_key="ollama",  # Required but unused by Ollama
                 ),
                 mode=instructor.Mode.JSON,
             )
-
         else:
-            self.client = instructor.patch(OpenAI(), mode=instructor.Mode.TOOLS)  # Uses default settings for OpenAI
+            # Default OpenAI client with tool calling mode
+            self.client = instructor.from_openai(OpenAI(), mode=instructor.Mode.TOOLS)
 
     def switch_model(self, use_local: bool):
         """
@@ -49,26 +49,21 @@ class GPTModelManager:
         """
         try:
             if self.use_local:
-                # Settings for local model
-                response = self.client.chat.completions.create(
-                    messages=[
-                        {"role": "user", "content": data}
-                    ],
-                    **model_settings,
-                    response_model=response_model,
-                )
+                messages = [{"role": "user", "content": data}]
             else:
-                # Settings for OpenAI model
                 messages = [
                     {"role": "system", "content": self.system_message},
-                    {"role": "user", "content": data}
+                    {"role": "user", "content": data},
                 ]
-                self.client = instructor.patch(OpenAI(), mode=instructor.Mode.TOOLS)
-                response = self.client.chat.completions.create(
-                    messages=messages,
-                    **model_settings,
-                    response_model=response_model,
-                )
+
+            response = self.client.chat.completions.create(
+                messages=messages,
+                **model_settings,
+                response_model=response_model,
+                # Retry a few times and allow generous timeout for local models
+                max_retries=3,
+                timeout=60,
+            )
 
         except Exception as e:
             response = TextResponse(response="An error occurred while generating the response.")
